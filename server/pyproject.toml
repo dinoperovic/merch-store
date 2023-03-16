@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "merch store"
+version = "0.1.0"
+description = ""
+authors = ["Dino Perovic <dino.perovic@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.1.7"
+
+
+[tool.poetry.group.dev.dependencies]
+pyright = "^1.1.299"
+black = "^23.1.0"
+pylint = "^2.17.0"
+isort = "^5.12.0"
+django-stubs = "^1.16.0"
+
+[tool.pyright]
+typeCheckingMode = "strict"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
