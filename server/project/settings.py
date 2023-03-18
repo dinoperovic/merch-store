@@ -1,7 +1,10 @@
+import sys
 from pathlib import Path
 from typing import Any
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+sys.path.insert(0, str(BASE_DIR / "apps"))
 
 SECRET_KEY = "django-insecure-+rf-21&s$b&rfrnvm2!+t5@j2u)4z5wlzgg5_5^xtn8s&6ca6r"
 DEBUG = True
@@ -14,6 +17,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "salesman.core",
+    "salesman.basket",
+    "salesman.checkout",
+    "salesman.orders",
+    "salesman.admin",
+    "rest_framework",
+    "shop",
 ]
 
 MIDDLEWARE = [
@@ -31,7 +41,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES: list[dict[str, Any]] = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "project" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -83,4 +93,13 @@ STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+# Salesman
+SALESMAN_BASKET_MODEL = "shop.Basket"
+SALESMAN_BASKET_ITEM_MODEL = "shop.BasketItem"
+SALESMAN_ORDER_MODEL = "shop.Order"
+SALESMAN_ORDER_ITEM_MODEL = "shop.OrderItem"
+SALESMAN_ORDER_PAYMENT_MODEL = "shop.OrderPayment"
+SALESMAN_ORDER_NOTE_MODEL = "shop.OrderNote"
